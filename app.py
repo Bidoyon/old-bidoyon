@@ -166,7 +166,3 @@ def add_edit_pressing():
             if response.status_code == 200:
 
                 return message("Vous avez bien modifié la pressée !", 'manager', token)
-
-
-if __name__ == '__main__':
-    app.run("0.0.0.0", 5000, debug=True)

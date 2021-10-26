@@ -1,0 +1,1 @@
+web: waitress-serve --host="localhost" --port=${PORT:-5000} app:app
