@@ -4,8 +4,8 @@ import requests
 import json
 
 app = Flask(__name__)
-address = "http://localhost:5000"
-api_address = "http://localhost:8000"
+address = "https://jus-de-pomme-web.herokuapp.com"
+api_address = "https://jus-de-pomme-api.herokuapp.com"
 
 
 def message(text, panel, token):
