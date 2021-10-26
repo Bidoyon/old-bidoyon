@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <title>Manager Panel</title>
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+    </head>
+
+    <body>
+
+        <div id="content">
+
+            <header>
+                <h1>Jus de Pomme</h1>
+                <h2>Panel Manager</h2>
+            </header>
+
+            <h3>Ajouter une pressée</h3>
+
+            <form action="{{ address }}/pressings?action=add&token={{ token }}" method="post">
+
+                <label for="juice">Jus (L) :</label>
+                <input type="number" name="juice" id="juice" value="0" required><br />
+
+                <label for="apples">Pommes (Kg) :</label>
+                <input type="number" name="apples" id="apples" value="0" required><br />
+
+                <input type="submit" value="Créer">
+
+            </form>
+
+            <h3>Ajouter des valeurs</h3>
+
+            <form action="{{ address }}/pressings?action=edit&token={{ token }}" method="post">
+
+                <label for="number">Pressée :</label>
+                <input type="number" name="number" id="number" value="{{ nb_pressings }}" min="1" max="{{ nb_pressings }}"><br>
+
+                <label for="added_juice">Jus ajouté (L) :</label>
+                <input type="number" name="added_juice" id="added_juice" value="0" required><br />
+
+                <label for="added_apples">Pommes ajoutées (Kg) :</label>
+                <input type="number" name="added_apples" id="added_apples" value="0" required><br />
+
+                <input type="submit" value="Ajouter">
+
+            </form>
+
+            <footer>
+                <a href="{{ address }}/">Accueil</a> -
+                <a href="{{ address }}/admin?token={{ token }}">Panel Admin</a>
+            </footer>
+
+        </div>
+
+    </body>
+
+</html>

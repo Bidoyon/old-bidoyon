@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&family=Source+Sans+Pro:wght@200&display=swap');
+
+body {
+    background-color: #C2FAEF;
+    font-family: 'Rubik', sans-serif;
+}
+
+#content {
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #CCFE81;
+}
+
+form {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #E9FE81;
+}
+
+input, select {
+    margin: 10px 0 10px 0;
+}
+
+h1 {
+    margin: 0;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #819EFE;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #FCD34D;
+}
+
+#current-pressing, #total-pressing, #last-pressings {
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0 10px 0;
+}
+
+#current-pressing h3, #current-pressing h4, #total-pressing h3, #total-pressing h4, #last-pressings h3, #last-pressings h4 {
+    margin: 0;
+}
+
+#current-pressing {
+    background-color: #FC647D;
+}
+
+#total-pressing {
+    background-color: #FA353C;
+}
+
+#last-pressings {
+    background-color: #89F1FD;
+}
+
+.pressing {
+    border-radius: 10px;
+    background-color: #9AF3FD;
+    margin: 10px 5px 10px 5px;
+    padding: 5px;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <title>Jus De Pomme</title>
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+    </head>
+
+    <body>
+
+        <div id="content">
+            <header>
+                <h1>Jus de Pomme</h1>
+                <h2>Toussaint 2021</h2>
+            </header>
+
+            <div id="stats">
+
+                <div id="current-pressing">
+
+                    <h3>Pressage actuel (n°{{ current_number }})</h3>
+
+                    <div>
+                        Jus : {{ current_juice }}L<br />
+                        Pommes : {{ current_apples }}Kg<br />
+                        -> {{ current_juice_per_apples }}L/Kg
+                    </div>
+
+                </div>
+
+                <div id="total-pressing">
+
+                    <h3>Total des pressées</h3>
+
+                    <div>
+                        Jus : {{ total_juice }}L<br />
+                        Pommes : {{ total_apples }}Kg<br />
+                        -> {{ total_juice_per_apples }}L/Kg
+                    </div>
+
+                </div>
+
+                <div id="last-pressings">
+
+                    <h3>Derniers pressages</h3>
+
+                    {% for number, juice, apples, juice_per_apples in last_pressings %}
+
+                        <div class="pressing">
+                            <h4>Pressage n°{{ number }}</h4>
+                            Jus : {{ juice }}L<br />
+                            Pommes : {{ apples }}Kg<br />
+                            -> {{ juice_per_apples }}L/Kg
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+             <footer>
+                <a href="{{ address }}/login">Connexion</a>
+             </footer>
+
+        </div>
+
+    </body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <title>Log in</title>
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+    </head>
+
+    <body>
+
+        <div id="content">
+
+            <header>
+            <h1>Jus de Pomme</h1>
+            <h2>Connexion</h2>
+            </header>
+
+            <form action="{{ address }}/login" method="post">
+
+            <label for="username">Nom d'utilisateur :</label>
+            <input type="text" name="username" id="username"><br />
+
+            <label for="password">Mot de passe :</label>
+            <input type="password" name="password" id="password"><br />
+
+            <input type="submit" value="Connexion">
+
+            </form>
+
+             <footer>
+                <a href="{{ address }}/">Accueil</a>
+             </footer>
+
+        </div>
+
+    </body>
+
+</html>
