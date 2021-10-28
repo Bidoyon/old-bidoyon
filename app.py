@@ -6,9 +6,9 @@ import json
 app = Flask(__name__)
 
 # Address of this webapp
-address = "http://localhost:5000"
+address = "https://jus-de-pomme-web.herokuapp.com/"
 # Address of the API
-api_address = "http://localhost:8000"
+api_address = "http://40.118.48.81:8000"
 
 
 def message(text, panel, token):
