@@ -6,9 +6,9 @@ import json
 app = Flask(__name__)
 
 # Address of this webapp
-address = "https://jus-de-pomme-web.herokuapp.com/"
+address = "http://localhost:5000"
 # Address of the API
-api_address = "http://40.118.48.81:8000"
+api_address = "http://localhost:8000"
 
 
 def message(text, panel, token):
@@ -67,7 +67,7 @@ def requires_auth(permission=None):
                         # If user doesn't meet the conditions
                         if not (admin_perm or manager_perm or investor_perm):
                             # Return an error
-                            return message("Vous n'avez pas la permission d'accéder ou de modifier ce contenu.", '', '')
+                            return message("Vous n'avez pas la permission d'accéder ou de modifier ce contenu.", user['permission'], token)
                     # Add the token to user information
                     user['token'] = token
                     # Return the result of the function and give the user to the function
