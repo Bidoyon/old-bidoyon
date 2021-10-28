@@ -81,3 +81,14 @@ Ce token est **indispensable** pour une bonne navigation sur l'application, car 
 Mais finalement, comment ça marche dans le code ? Tout simplement, l'application envoie le token à l'API. L'API va chercher l'utilisateur qui possède ce token dans sa base de données et va retourner son nom et sa permission.
 
 À partir de ces précieuses informations, l'application va comparer la permission requise par la page avec la permission que possède l'utilisateur. Si l'utilisateur a la bonne permission, l'application lui charge la page. Sinon, elle lui envoie une erreur.
+
+### L'avancement
+Cette partie n'a pas vraiment de rapport avec comment marche l'application, mais plutôt comment je fonctionne.
+
+Malgré le fait que ce projet m'ait motivé, je devais le terminer en seulement quelques jours. Comme à mon habitude, j'ai rencontré énormément de problèmes, des erreurs, même des fois un "s" manquant dans une base de données et tout plante.
+
+Et contrairement à ce qu'on pourrait croire, ma "flemme de corriger ça maintenant" n'a pas été un frein. Au lieu de batailler inutilement sur un problème, j'ai pu continuer d'autres branches de l'application qui ne dépendaient pas de la partie défaillante.
+
+L'important quand on a la flemme, c'est simplement de noter ce qu'on a à faire sur une feuille de papier. Effectivement, malgré mes deux To Do List bien remplies, j'ai trouvé la motivation pour tout corriger le lendemain.
+
+Le secret, c'est de savoir faire autre chose sans perdre de vue son objectif.
