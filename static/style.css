@@ -12,7 +12,7 @@ body {
     background-color: #CCFE81;
 }
 
-form {
+form, #block {
     padding: 20px;
     border-radius: 10px;
     background-color: #E9FE81;
@@ -36,7 +36,7 @@ footer {
     background-color: #FCD34D;
 }
 
-#current-pressing, #total-pressing, #last-pressings {
+#current-pressing, #total-pressing, #last-pressings, #investments {
     border-radius: 10px;
     padding: 10px;
     margin: 10px 0 10px 0;
@@ -54,11 +54,11 @@ footer {
     background-color: #FA353C;
 }
 
-#last-pressings {
+#last-pressings, #investments {
     background-color: #89F1FD;
 }
 
-.pressing {
+.pressing, .investment {
     border-radius: 10px;
     background-color: #9AF3FD;
     margin: 10px 5px 10px 5px;

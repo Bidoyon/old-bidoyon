@@ -5,7 +5,7 @@
 
         <meta charset="UTF-8">
 
-        <title>Message</title>
+        <title>Indisponible</title>
 
         <meta name="viewport" content="width=device-width"/>
 
@@ -21,16 +21,13 @@
 
             <header>
                 <h1>Jus de Pomme</h1>
-                <h2>Message</h2>
+                <h2>Indisponible</h2>
             </header>
 
-            {{ text }}
+            Le service de données est indisponible.
 
             <footer>
-                <a href="{{ address }}/?token={{ token }}">Accueil</a>
-                {% if panel %}
-                - <a href="{{ address }}/{{ panel }}?token={{ token }}">Retour Panel</a>
-                {% endif %}
+                <a href="{{ address }}/">Tenter de retourner à l'Accueil</a>
             </footer>
 
         </div>

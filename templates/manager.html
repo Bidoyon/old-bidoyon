@@ -6,11 +6,13 @@
 
         <meta charset="UTF-8">
 
-        <title>Manager Panel</title>
+        <title>Panel Manager</title>
 
         <meta name="viewport" content="width=device-width"/>
 
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
     </head>
 
@@ -22,6 +24,15 @@
                 <h1>Jus de Pomme</h1>
                 <h2>Panel Manager</h2>
             </header>
+
+            <h3>Valeurs actuelles</h3>
+
+            <div id="block">
+
+                {{ used_apples }} Kg de pommes utilisés sur {{ invested_apples }} investis<br />
+                {{ produced_juice }} litres de jus produits
+
+            </div>
 
             <h3>Ajouter une pressée</h3>
 
@@ -54,9 +65,12 @@
 
             </form>
 
+            <a href="{{ api_address }}/data"><h3>Télécharger les valeurs</h3></a>
+
             <footer>
-                <a href="{{ address }}/">Accueil</a> -
-                <a href="{{ address }}/admin?token={{ token }}">Panel Admin</a>
+                <a href="{{ address }}/?token={{ token }}">Accueil</a> -
+                <a href="{{ address }}/admin?token={{ token }}">Panel Admin</a> -
+                <a href="{{ address }}/investor?token={{ token }}">Panel Investor</a>
             </footer>
 
         </div>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <title>Panel Investor</title>
+
+        <meta name="viewport" content="width=device-width"/>
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    </head>
+
+    <body>
+
+        <div id="content">
+
+            <header>
+                <h1>Jus de Pomme</h1>
+                <h2>Panel Investor</h2>
+            </header>
+
+            {% if permission == 'admin' or permission == 'manager' %}
+
+                <h3>Ajouter un investissement :</h3>
+                Attention ! Si l'investissement existe déjà, la valeur s'ajoutera à l'investissement déjà effectué.
+
+                <form action="{{ address }}/investments?action=add&token={{ token }}" method="post">
+
+                    <label for="username">Nom d'utilisateur :</label>
+                    <input type="text" name="username" id="username"><br />
+
+                    <label for="apples">Pommes données (Kg) :</label>
+                    <input type="number" name="apples" id="apples" value="0" required><br />
+
+                    <input type="submit" value="Ajouter">
+
+                </form>
+
+                <h3>Retirer un investissement :</h3>
+
+                <form action="{{ address }}/investments?action=delete&token={{ token }}" method="post">
+
+                    <label for="username">Nom d'utilisateur :</label>
+                    <input type="text" name="username" id="username"><br />
+
+                    <input type="submit" value="Retirer">
+
+                </form>
+
+                <h3>Investissements des utilisateurs :</h3>
+
+                <div id="investments">
+
+                    {% for username, apples in investments %}
+
+                        <div class="investment">
+
+                            Utilisateur : <strong>{{ username }}</strong><br />
+                            Pommes données : <strong>{{ apples }}</strong>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div id="user-investment">
+
+                    Vous avez investi : {{ apples }} Kg<br />
+                    Vous recevez : {{ brings }} L
+
+                </div>
+
+            {% endif %}
+
+            <footer>
+                <a href="{{ address }}/?token={{ token }}">Accueil</a> -
+                <a href="{{ address }}/admin?token={{ token }}">Panel Admin</a> -
+                <a href="{{ address }}/manager?token={{ token }}">Panel Manager</a>
+            </footer>
+
+        </div>
+
+    </body>
+
+</html>

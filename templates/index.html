@@ -12,6 +12,8 @@
 
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
     </head>
 
     <body>
@@ -68,7 +70,18 @@
             </div>
 
              <footer>
-                <a href="{{ address }}/login">Connexion</a>
+
+                 {% if connected %}
+
+                     <a href="{{ address }}/{{ connected }}?token={{ token }}">Aller au Panel</a> -
+                     <a href="{{ address }}/">Déconnexion</a>
+
+                 {% else %}
+
+                     <a href="{{ address }}/login">Connexion</a>
+
+                 {% endif %}
+
              </footer>
 
         </div>

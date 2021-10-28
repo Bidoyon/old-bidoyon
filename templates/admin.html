@@ -6,11 +6,13 @@
 
         <meta charset="UTF-8">
 
-        <title>Admin Panel</title>
+        <title>Panel Admin</title>
 
         <meta name="viewport" content="width=device-width"/>
 
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
     </head>
 
@@ -33,6 +35,8 @@
                 <label for="password">Mot de passe :</label>
                 <input type="password" name="password" id="password"><br />
 
+                <label for="investor">Investor</label>
+                <input type="radio" name="permission" id="investor" value="investor"><br />
                 <label for="manager">Manager</label>
                 <input type="radio" name="permission" id="manager" value="manager"><br />
                 <label for="admin">Admin</label>
@@ -54,8 +58,9 @@
             </form>
 
             <footer>
-                <a href="{{ address }}/">Accueil</a> -
-                <a href="{{ address }}/manager?token={{ token }}">Panel Manager</a>
+                <a href="{{ address }}/?token={{ token }}">Accueil</a> -
+                <a href="{{ address }}/manager?token={{ token }}">Panel Manager</a> -
+                <a href="{{ address }}/investor?token={{ token }}">Panel Investor</a>
             </footer>
 
         </div>
