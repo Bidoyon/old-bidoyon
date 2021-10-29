@@ -57,12 +57,13 @@
 
                 <div id="investments">
 
-                    {% for username, apples in investments %}
+                    {% for username, apples, brings in investments %}
 
                         <div class="investment">
 
                             Utilisateur : <strong>{{ username }}</strong><br />
-                            Pommes données : <strong>{{ apples }} Kg</strong>
+                            Pommes données : <strong>{{ apples }} Kg</strong><br />
+                            Part de jus : <strong>{{ brings }} L</strong>
 
                         </div>
 
@@ -70,9 +71,13 @@
 
                 </div>
 
-            {% else %}
+            {% endif %}
+
+            {% if apples %}
 
                 <div id="user-investment">
+
+                    <h3>Votre investissement :</h3>
 
                     Vous avez investi : {{ apples }} Kg<br />
                     Vous recevez : {{ brings }} L

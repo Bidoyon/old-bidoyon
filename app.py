@@ -292,26 +292,30 @@ def add_edit_pressing(user):
 @requires_api
 @requires_auth('investor')
 def investor(user):
-    # Save the username and the password of the user from auth
-    username = user['username']
-    permission = user['permission']
     # If the user is an admin or a manager
-    if permission == 'admin' or permission == 'manager':
+    if user['permission'] == 'admin' or user['permission'] == 'manager':
         # Send a request to get the investments
-        response = requests.get(f'{api_address}/investments', data=json.dumps({}))
-        # Render the template with response information
-        return render_template('investor.html', investments=response.json(), permission=permission, token=user['token'])
-    # If the user is an investor
-    elif permission == 'investor':
+        investments = requests.get(f'{api_address}/investments', data=json.dumps({})).json()
         # Send a request to get his investment and save the response
-        response = requests.get(f'{api_address}/investments', data=json.dumps({"username": username}))
+        response = requests.get(f'{api_address}/investments', data=json.dumps({"username": user['username']}))
+        apples = None
+        brings = None
+        if response.status_code == 200:
+            apples = response.json()['apples']
+            brings = response.json()['brings']
+        # Render the template with response information
+        return render_template('investor.html', investments=investments, permission=user['permission'], apples=apples, brings=brings, token=user['token'])
+    # If the user is an investor
+    elif user['permission'] == 'investor':
+        # Send a request to get his investment and save the response
+        response = requests.get(f'{api_address}/investments', data=json.dumps({"username": user['username']}))
         # If the response is ok
         if response.status_code == 200:
             # Save the apples and the user income
             apples = response.json()['apples']
             brings = response.json()['brings']
             # Render the template with response information
-            return render_template('investor.html', permission=permission, apples=apples, brings=brings, token=user['token'])
+            return render_template('investor.html', permission=user['permission'], apples=apples, brings=brings, token=user['token'])
         # If the response isn't ok
         else:
             # Return an error
