@@ -68,9 +68,11 @@ S'il y a bien une chose que j'ai pensé lorsque j'ai décidé de créer cette ap
 
 Tout d'abord, ce qu'il faut savoir, c'est que l'événement "Jus de Pomme" se limite à une vingtaine de personnes, dont beaucoup de couples et d'enfants. Pour moi, pas besoin d'inscription : je peux très bien m'occuper de créer des comptes aux personnes qui en ont besoin ! Mais qui dit "compte" dit "connexion". Alors même s'il n'y a pas besoin d'une page d'inscription, il y a bien besoin d'une page de connexion !
 
-Pour se connecter, on remplit un formulaire avec son nom d'utilisateur et son mot de passe. Quand on clique sur le bouton, les données ne vont pas directement à l'API. La requête POST générée par le formulaire est d'abord traitée par l'application qui récupère les données du formulaire et les ordonne dans un format JSON.
+Pour se connecter, on remplit un formulaire avec son nom d'utilisateur et son mot de passe. Quand on clique sur le bouton, les données ne vont pas directement à l'API. La requête POST générée par le formulaire est d'abord traitée par l'application qui récupère les données du formulaire et les ordonne dans un format JSON. (Voir partie "Les formulaires" pour plus d'informations)
 
 Elle envoie ensuite les données qu'elle a mises en forme sous la forme d'une requête GET à l'API. Cette requête contient donc par exemple les données {"username": "Bidulman", "password": "ILoveCoding"}. En réponse à cette requête, l'API renvoie des informations sur l'utilisateur : son **nom d'utilisateur** (qu'on soit sûrs que c'est bien lui, on ne sait jamais !), **son rôle** (ou sa permission, si vous préférez) ainsi que **son token**.
+
+Si l'authentification est réussie, alors l'application va rediriger l'utilisateur sur son panel de base (s'il est responsable, il sera redirigé sur le panel manager).
 
 Ce qui nous intéresse pour l'instant, c'est ce fameux token, le "jeton d'authentification". Ce jeton est un token hexadécimal en 16 bits du module **secrets**, c'est-à-dire une suite de 32 caractères compris entre **a et b** ou **0 et 9**.
 
@@ -81,6 +83,13 @@ Ce token est **indispensable** pour une bonne navigation sur l'application, car 
 Mais finalement, comment ça marche dans le code ? Tout simplement, l'application envoie le token à l'API. L'API va chercher l'utilisateur qui possède ce token dans sa base de données et va retourner son nom et sa permission.
 
 À partir de ces précieuses informations, l'application va comparer la permission requise par la page avec la permission que possède l'utilisateur. Si l'utilisateur a la bonne permission, l'application lui charge la page. Sinon, elle lui envoie une erreur.
+
+### Les formulaires
+Toute donnée à rentrer, toute action que l'utilisateur exécute est remplie sous forme de formulaire. Authentification, ajout ou suppression d'utilisateur, ajout ou édition de pressée : tout passe par un formulaire.
+
+Ce formulaire n'est pas traité par l'API. Du moins, pas directement. Une fois le formulaire rempli et envoyé, une requête POST contenant toutes les informations du formulaire est envoyée à une autre route de l'application Web, invisible du point de vue du visiteur. L'application récupère les données et les réorganise pour envoyer une requête à l'API, qui lui répond.
+
+L'application peut alors renvoyer l'utilisateur sur une autre page, souvent un message de confirmation.
 
 ### L'avancement
 Cette partie n'a pas vraiment de rapport avec comment marche l'application, mais plutôt comment je fonctionne.
