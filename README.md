@@ -11,6 +11,8 @@ Cet événement implique donc plusieurs calculs. Les investisseurs doivent recev
 
 Le projet est donc là pour faciliter la gestion de l'événement. Il doit être capable de fournir une interface utilisateur (sous forme de site Web) facile d'accès, avec un système de comptes et d'authentification, de plusieurs rôles (ils seront détaillés plus bas) et donc de permissions. Il doit effectuer les calculs automatiquement à partir des valeurs qu'on y rentre, et les afficher de différentes façons en fonction du rôle de l'utilisateur.
 
+**Bidoyon** ici veut dire "ce qui sort du pressoir". Le projet prend donc ce nom pour un peu plus d'originalité que "Jus de Pomme", tout simplement.
+
 ## Le projet
 
 ### Organisation

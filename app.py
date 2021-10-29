@@ -5,8 +5,10 @@ import json
 
 app = Flask(__name__)
 
+app_name = "Bidoyon 2021"
+
 # Address of this webapp (WITHOUT THE END SLASH)
-address = "https://juspomme.herokuapp.com"
+address = "https://bidoyon.herokuapp.com"
 # Address of the API (WITHOUT THE END SLASH TOO)
 api_address = "http://40.118.48.81:8000"
 
@@ -16,7 +18,7 @@ def message(text, panel, token):
     Returns a message template
     """
     # Render the template en return it
-    return render_template('message.html', text=text, address=address, panel=panel, token=token)
+    return render_template('message.html', app_name=app_name, text=text, address=address, panel=panel, token=token)
 
 
 def requires_api(f):
@@ -31,7 +33,7 @@ def requires_api(f):
         # If API doesn't respond
         except requests.exceptions.ConnectionError:
             # Return an error
-            return render_template('dataunavailable.html')
+            return render_template('dataunavailable.html', app_name=app_name)
         # If API responded, call the function
         return f()
 
@@ -123,6 +125,7 @@ def index():
     pressings.reverse()
     # Render the template
     return render_template('index.html', # The template
+                           app_name=app_name, # The name of the app
                            current_number=current[0], # The number of the current pressing
                            current_juice=current[1], # The produced juice of the current pressing
                            current_apples=current[2], # The apples used in the current pressing
@@ -142,7 +145,7 @@ def get_login():
     """
 
     # Return the template
-    return render_template('login.html', address=address)
+    return render_template('login.html', app_name=app_name, address=address)
 
 
 @app.route('/login', methods=["POST"], endpoint='post_login')
@@ -192,7 +195,7 @@ def manager(user):
     # Save the number of apples used, invested and juice produced
     response = requests.get(f'{api_address}/apples')
     # Render the template
-    return render_template('manager.html', api_address=api_address, used_apples=response.json()['used'], invested_apples=response.json()['invested'], produced_juice=response.json()['juice'], nb_pressings=nb_pressings, token=user['token'])
+    return render_template('manager.html', app_name=app_name, api_address=api_address, used_apples=response.json()['used'], invested_apples=response.json()['invested'], produced_juice=response.json()['juice'], nb_pressings=nb_pressings, token=user['token'])
 
 
 @app.route('/admin', endpoint='admin')
@@ -204,7 +207,7 @@ def admin(user):
     """
 
     # Render the admin page
-    return render_template('admin.html', token=user['token'])
+    return render_template('admin.html', app_name=app_name, token=user['token'])
 
 
 @app.route('/users', methods=["POST"], endpoint='add_remove_user')
@@ -304,7 +307,7 @@ def investor(user):
             apples = response.json()['apples']
             brings = response.json()['brings']
         # Render the template with response information
-        return render_template('investor.html', investments=investments, permission=user['permission'], apples=apples, brings=brings, token=user['token'])
+        return render_template('investor.html', app_name=app_name, investments=investments, permission=user['permission'], apples=apples, brings=brings, token=user['token'])
     # If the user is an investor
     elif user['permission'] == 'investor':
         # Send a request to get his investment and save the response
@@ -315,7 +318,7 @@ def investor(user):
             apples = response.json()['apples']
             brings = response.json()['brings']
             # Render the template with response information
-            return render_template('investor.html', permission=user['permission'], apples=apples, brings=brings, token=user['token'])
+            return render_template('investor.html', app_name=app_name, permission=user['permission'], apples=apples, brings=brings, token=user['token'])
         # If the response isn't ok
         else:
             # Return an error
