@@ -59,9 +59,9 @@ Un visiteur du site qui n'est pas connecté ou même inscrit n'est pas compté c
   - aux responsables de voir combien de pommes ont été investies, le jus à redistribuer...
 
 ## Comment ça marche ?
-Si je venais à devoir faire un système similaire par la suite, cette partie me servirait. Elle expliquera différentes façons de procéder que j'utilise dans l'application. Ces façons de procéder sont très loin d'être les meilleures, mais elles ont l'avantage d'être simples et rapide à utiliser : pour un projet qui doit être imaginé, développé et déployé en peu de jours, c'est plutôt pratique.
+Si je venais à devoir faire un système similaire par la suite, cette partie me servirait. Elle explique différentes façons de procéder que j'utilise dans l'application. Ces façons de procéder sont très loin d'être les meilleures, mais elles ont l'avantage d'être simples et rapide à utiliser : pour un projet qui doit être imaginé, développé et déployé en peu de jours, c'est plutôt pratique.
 
-Cette partie sera essentiellement rédigée à la première personne, car il s'agit de mon ressenti. Votre avis peut totalement différer du mien, il existe bien plus d'une façon de faire en code.
+Attention ! Dans cette partie, il s'agit de mon ressenti. Votre avis peut totalement différer du mien, mais prenez en compte que le projet n'a pas besoin d'être très sécurisé, et qu'il devait être développé rapidement.
 
 Dans les textes qui vont suivre, j'utiliserai plutôt "application" pour parler de l'application web, et "API" pour parler... de l'API !
 
